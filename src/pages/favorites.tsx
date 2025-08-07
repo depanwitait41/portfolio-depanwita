@@ -1,11 +1,9 @@
 import Layout from '../components/Layout';
-import Hero from '../components/Hero';
 import Favorites from '../components/Favorites';
 
-export default function Home() {
+export default function FavoritesPage() {
   return (
     <Layout>
-      <Hero />
       <Favorites />
     </Layout>
   );
