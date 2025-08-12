@@ -12,7 +12,6 @@ export default function Header({ onMenuClick }: HeaderProps) {
   const navLinks = [
     { href: '/', label: 'Home' },
     { href: '/projects', label: 'Projects' },
-    { href: '/favorites', label: 'Favorites' },
   ];
 
   const handleContactClick = (e: React.MouseEvent) => {

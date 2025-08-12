@@ -13,7 +13,6 @@ export default function SideDrawer({ isOpen, onClose }: SideDrawerProps) {
   const navLinks = [
     { href: '/', label: 'Home' },
     { href: '/projects', label: 'Projects' },
-    { href: '/favorites', label: 'Favorites' },
   ];
 
   const handleContactClick = (e: React.MouseEvent) => {
