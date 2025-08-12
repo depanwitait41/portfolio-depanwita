@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
+import ContactPopup from './ContactPopup';
 
 interface SideDrawerProps {
   isOpen: boolean;
@@ -7,13 +8,19 @@ interface SideDrawerProps {
 }
 
 export default function SideDrawer({ isOpen, onClose }: SideDrawerProps) {
+  const [isContactOpen, setIsContactOpen] = useState(false);
+
   const navLinks = [
     { href: '/', label: 'Home' },
     { href: '/projects', label: 'Projects' },
-    { href: '/about', label: 'About' },
-    { href: '/contact', label: 'Contact' },
     { href: '/favorites', label: 'Favorites' },
   ];
+
+  const handleContactClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setIsContactOpen(true);
+    onClose(); // Close the side drawer when opening contact popup
+  };
 
   return (
     <>
@@ -70,6 +77,14 @@ export default function SideDrawer({ isOpen, onClose }: SideDrawerProps) {
                   </Link>
                 </li>
               ))}
+              <li>
+                <button
+                  onClick={handleContactClick}
+                  className="block w-full text-left text-gray-300 hover:text-[#A59ADB] transition-colors duration-200 font-medium py-2 px-3 rounded-lg hover:bg-[#A59ADB]/10"
+                >
+                  Contact
+                </button>
+              </li>
             </ul>
           </nav>
 
@@ -81,6 +96,12 @@ export default function SideDrawer({ isOpen, onClose }: SideDrawerProps) {
           </div>
         </div>
       </div>
+
+      {/* Contact Popup */}
+      <ContactPopup 
+        isOpen={isContactOpen} 
+        onClose={() => setIsContactOpen(false)} 
+      />
     </>
   );
 }

@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <Layout>
       <Hero />
-      <Favorites />
+      {/* <Favorites /> */}
     </Layout>
   );
 }

@@ -1,6 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function Hero() {
+  const [showTick, setShowTick] = useState(false);
+
+  const handleGetInTouch = () => {
+    setShowTick(true);
+    // Reset tick after 3 seconds
+    setTimeout(() => setShowTick(false), 3000);
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Gradient */}
@@ -41,9 +49,32 @@ export default function Hero() {
           <button className="bg-[#A59ADB] hover:bg-[#CE4DDB] text-white px-8 py-3 rounded-lg font-medium transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-[#A59ADB]/25">
             View My Work
           </button>
-          <button className="border border-[#A59ADB] text-[#A59ADB] hover:bg-[#A59ADB] hover:text-white px-8 py-3 rounded-lg font-medium transition-all duration-300 transform hover:scale-105">
-            Get In Touch
-          </button>
+          <div className="relative">
+            <button 
+              onClick={handleGetInTouch}
+              className="border border-[#A59ADB] text-[#A59ADB] hover:bg-[#A59ADB] hover:text-white px-8 py-3 rounded-lg font-medium transition-all duration-300 transform hover:scale-105"
+            >
+              Get In Touch
+            </button>
+            {/* Green Tick */}
+            {showTick && (
+              <div className="absolute -top-2 -right-2 w-6 h-6 bg-[#CE4DDB] rounded-full flex items-center justify-center shadow-lg animate-bounce">
+                <svg 
+                  className="w-4 h-4 text-white" 
+                  fill="none" 
+                  viewBox="0 0 24 24" 
+                  stroke="currentColor"
+                >
+                  <path 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round" 
+                    strokeWidth={3} 
+                    d="M5 13l4 4L19 7" 
+                  />
+                </svg>
+              </div>
+            )}
+          </div>
         </div>
 
         {/* Scroll Indicator */}
