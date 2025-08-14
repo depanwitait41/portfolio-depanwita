@@ -68,7 +68,7 @@ export default function ContactPopup({ isOpen, onClose }: ContactPopupProps) {
           {/* Content */}
           <div className="p-6 space-y-6">
             {contactInfo.map((element, index)=>{
-              return(<div className="flex items-center space-x-4">
+              return(<div key={element.label} className="flex items-center space-x-4">
                 <div className="w-12 h-12 bg-[#A59ADB]/20 rounded-full flex items-center justify-center">
                 <svg className="w-6 h-6 text-[#A59ADB]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   {element.path}

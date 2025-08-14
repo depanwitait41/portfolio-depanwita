@@ -24,7 +24,7 @@ export default function Hero() {
       <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
         {/* Greeting */}
         <div className="mb-6">
-          <span className="text-[#A59ADB] text-lg font-medium">Hello, I'm</span>
+          <span className="text-[#A59ADB] text-lg font-medium">{`Hello, I'm`} </span>
         </div>
 
         {/* Name */}
