@@ -10,13 +10,18 @@ export default function Header({ onMenuClick }: HeaderProps) {
   const [isContactOpen, setIsContactOpen] = useState(false);
 
   const navLinks = [
-    { href: '/', label: 'Home' },
-    { href: '/projects', label: 'Projects' },
+    { href: '#', label: 'Home', action: ()=>window.scrollTo({top:0, behavior: 'smooth'})},
+    { href: '#projects', label: 'Projects', action: ()=>document.getElementById("projects")?.scrollIntoView({ behavior: 'smooth' }) },
   ];
 
   const handleContactClick = (e: React.MouseEvent) => {
     e.preventDefault();
     setIsContactOpen(true);
+  };
+
+  const handleNavClick = (e: React.MouseEvent, action: () => void) => {
+    e.preventDefault();
+    action();
   };
 
   return (
@@ -34,13 +39,13 @@ export default function Header({ onMenuClick }: HeaderProps) {
             {/* Desktop Navigation */}
             <nav className="hidden md:flex space-x-8">
               {navLinks.map((link) => (
-                <Link
+                <button
                   key={link.href}
-                  href={link.href}
+                  onClick={(e)=>handleNavClick(e, link.action)}
                   className="text-gray-300 hover:text-[#A59ADB] transition-colors duration-200 font-medium"
                 >
                   {link.label}
-                </Link>
+                </button>
               ))}
               <button
                 onClick={handleContactClick}

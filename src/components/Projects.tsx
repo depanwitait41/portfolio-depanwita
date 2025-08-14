@@ -93,7 +93,7 @@ export default function Projects() {
 
   return (
     <Layout>
-      <div className="min-h-screen py-16 px-4 sm:px-6 lg:px-8">
+      <div id="projects" className="min-h-screen py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div className="text-center mb-16">

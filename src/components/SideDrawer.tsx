@@ -11,8 +11,8 @@ export default function SideDrawer({ isOpen, onClose }: SideDrawerProps) {
   const [isContactOpen, setIsContactOpen] = useState(false);
 
   const navLinks = [
-    { href: '/', label: 'Home' },
-    { href: '/projects', label: 'Projects' },
+    { href: '#', label: 'Home', action: ()=> window.scrollTo({top:0, behavior: 'smooth'}) },
+    { href: '#projects', label: 'Projects', action: ()=>document.getElementById("projects")?.scrollIntoView({ behavior: 'smooth' }) },
   ];
 
   const handleContactClick = (e: React.MouseEvent) => {
@@ -21,6 +21,11 @@ export default function SideDrawer({ isOpen, onClose }: SideDrawerProps) {
     onClose(); // Close the side drawer when opening contact popup
   };
 
+  const handleNavClick = (e: React.MouseEvent, action: () => void) => {
+    e.preventDefault();
+    action();
+    onClose(); // Close the drawer after navigation
+  };
   return (
     <>
       {/* Backdrop */}
@@ -67,13 +72,12 @@ export default function SideDrawer({ isOpen, onClose }: SideDrawerProps) {
             <ul className="space-y-4">
               {navLinks.map((link) => (
                 <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    onClick={onClose}
+                  <button
+                    onClick={(e)=> handleNavClick(e, link.action)}
                     className="block text-gray-300 hover:text-[#A59ADB] transition-colors duration-200 font-medium py-2 px-3 rounded-lg hover:bg-[#A59ADB]/10"
                   >
                     {link.label}
-                  </Link>
+                  </button>
                 </li>
               ))}
               <li>
